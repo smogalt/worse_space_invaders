@@ -1,19 +1,26 @@
 #include <ncurses.h>
 #include <stdlib.h>
 #include <stdio.h>
+<<<<<<< HEAD
 #include <time.h>
 
+=======
+>>>>>>> be100d0928d3dca7dc6b8b5f8cb5183b4ea57c66
 
 /* Global variables */
 int max_box_coords[2] = {21, 41};  // X and Y, respectively
 int player_coords[2] = {39, 9};    // ^^^^^^^^^^^^^^^^^^^^^
+<<<<<<< HEAD
 int enemy_y = 2;
 int enemy_x;
 
+=======
+>>>>>>> be100d0928d3dca7dc6b8b5f8cb5183b4ea57c66
 
 /* Function Prototypes */
 void draw_box(int max_x, int max_y);
 void check_plyr_pos(int x, int y);
+<<<<<<< HEAD
 void check_enemy_y(int y);
 
 
@@ -21,17 +28,31 @@ int main() {
 	/* Seed rand() */
 	srand(time(NULL));
 
+=======
+
+int main() {
+	/* Initialize variables */
+	
+	
+>>>>>>> be100d0928d3dca7dc6b8b5f8cb5183b4ea57c66
 	/* Initialize window */	
 	initscr();
 	cbreak();
 	noecho();
 	curs_set(0);
 
+<<<<<<< HEAD
 
 	/* Main game loop */
 	while(1) {
 		/* Player Controls */
 		char input_char = getch();
+=======
+	while(1) {
+		/* Player Controls */
+		char input_char = getch();
+		
+>>>>>>> be100d0928d3dca7dc6b8b5f8cb5183b4ea57c66
 		switch(input_char) {
 			case 119 :
 				player_coords[0]--;
@@ -57,6 +78,7 @@ int main() {
 				break;
 		}
 		
+<<<<<<< HEAD
 		
 
 		clear();	
@@ -83,12 +105,24 @@ int main() {
 		
 		
 		refresh();
+=======
+		clear();	
+		mvaddch(player_coords[0], player_coords[1], 'o');
+		mvaddstr(42, 7, "WASD, Q to quit");
+		
+		refresh();
+		check_plyr_pos(player_coords[0], player_coords[1]);
+
+		/* Draw box */
+		draw_box(max_box_coords[1], max_box_coords[0]);	
+>>>>>>> be100d0928d3dca7dc6b8b5f8cb5183b4ea57c66
 	}	
 	endwin();
 
 	return(0);
 }
 
+<<<<<<< HEAD
 
 /* Function definitions */
 void check_enemy_y(int y) {
@@ -106,6 +140,9 @@ void check_enemy_y(int y) {
 			break;
 	}
 }
+=======
+/* Function definitions */
+>>>>>>> be100d0928d3dca7dc6b8b5f8cb5183b4ea57c66
 
 void draw_box(int max_x, int max_y) { // Draws Box
 	
