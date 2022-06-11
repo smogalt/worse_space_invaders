@@ -3,7 +3,7 @@ CC = gcc
 
 # Compiler flags:
 # -Wall		for compiler warnings
-CFLAGS = -Wall
+# CFLAGS = -Wall
 
 # Linker flags:
 # ncurses	used for the terminal interface
@@ -15,4 +15,4 @@ TARGET = worse_space_invaders
 all: $(TARGET)
 
 $(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(LFLAGS)
+	$(CC) $(CFLAGS) -o $(TARGET).o $(TARGET).c $(LFLAGS)
