@@ -3,12 +3,13 @@
 #include <stdio.h>
 #include <time.h>
 
+#define ENEMY_COUNT 20
 
 /* Global variables */
 int max_box_coords[2] = {21, 41};  // X and Y, respectively
 int player_coords[2] = {39, 9};    // ^^^^^^^^^^^^^^^^^^^^^
 int enemy_y = 2;
-int enemy_x[5];
+int enemy_x[ENEMY_COUNT];
 int x_index;
 
 
@@ -33,7 +34,7 @@ int main() {
 	while(1) {
 		
 		/* Collisions */
-		for (x_index = 0; x_index <= 4; x_index++) {
+		for (x_index = 0; x_index <= ENEMY_COUNT; x_index++) {
 			if (enemy_x[x_index] == player_coords[1] && enemy_y == player_coords[0]) {
 				endwin();
 				return(0);
@@ -69,7 +70,6 @@ int main() {
 		}
 		
 		
-
 		clear();	
 		mvaddch(player_coords[0], player_coords[1], 'o');
 		mvaddstr(42, 7, "WASD, Q to quit");
@@ -78,7 +78,7 @@ int main() {
 		/* Enemy movement */		
 		check_enemy_y(enemy_y);
 		enemy_y++;
-		for (int index = 0; index <= 4; index++)
+		for (int index = 0; index <= ENEMY_COUNT; index++)
 			mvaddch(enemy_y, enemy_x[index], 'X');
 		
 
@@ -89,21 +89,21 @@ int main() {
 		
 		refresh();
 	}	
+	
 	endwin();
-	for (int index = 0; index <= 4; index++)
-		printf("%d", enemy_x[index]);
 	return(0);
 }
 
 
 /* Function definitions */
-void check_enemy_y(int y) {	// To reset and assign X values to enemies
+void check_enemy_y(int y) {	// To reset and assign X values to enemies, also regulates score.
 	switch (y) {
 		case 40 :
 			enemy_y = 2;
-			for (int index = 0; index <= 4; index++)
+			for (int index = 0; index <= ENEMY_COUNT; index++) 
 				enemy_x[index] = rand() % 21;
 				break;
+			
 		
 		case 1 :
 			enemy_y = 2;
