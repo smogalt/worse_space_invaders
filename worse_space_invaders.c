@@ -11,6 +11,8 @@ int player_coords[2] = {39, 9};    // ^^^^^^^^^^^^^^^^^^^^^
 int enemy_y = 2;
 int enemy_x[ENEMY_COUNT];
 int x_index;
+unsigned int score;
+char score_str[11];
 
 
 /* Function Prototypes */
@@ -73,6 +75,9 @@ int main() {
 		clear();	
 		mvaddch(player_coords[0], player_coords[1], 'o');
 		mvaddstr(42, 7, "WASD, Q to quit");
+		mvaddstr(43, 0, "Score: ");
+		sprintf(score_str, "%d", score);
+		mvaddstr(43, 7, score_str);
 		check_plyr_pos(player_coords[0], player_coords[1]);
 		
 		/* Enemy movement */		
@@ -100,9 +105,12 @@ void check_enemy_y(int y) {	// To reset and assign X values to enemies, also reg
 	switch (y) {
 		case 40 :
 			enemy_y = 2;
+			
 			for (int index = 0; index <= ENEMY_COUNT; index++) 
 				enemy_x[index] = rand() % 21;
-				break;
+			
+			score += ENEMY_COUNT;
+			break;
 			
 		
 		case 1 :
